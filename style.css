@@ -1,5 +1,4 @@
 
-/* style.css */
 body {
   font-family: Arial, sans-serif;
   background: #f0f4f8;
@@ -14,12 +13,6 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.teams button {
-  margin: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
 }
 
 #letter-input {
