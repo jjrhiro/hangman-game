@@ -1,23 +1,65 @@
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f0f4f8;
-  text-align: center;
-  padding: 20px;
+const words = [
+  "innovation", "teamwork", "synergy", "brainstorm", "agile", "sprint", "retrospective"
+];
+
+let selectedWord = "";
+let guessedLetters = [];
+let wrongLetters = [];
+
+function startGame() {
+  selectedWord = words[Math.floor(Math.random() * words.length)];
+  guessedLetters = [];
+  wrongLetters = [];
+  updateDisplay();
+  document.getElementById("message").textContent = "";
 }
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+function updateDisplay() {
+  const display = selectedWord
+    .split("")
+    .map(letter => (guessedLetters.includes(letter) ? letter : "_"))
+    .join(" ");
+  document.getElementById("word-display").textContent = display;
+  document.getElementById("wrong-letters").textContent = wrongLetters.join(", ");
 }
 
-#letter-input {
-  padding: 10px;
-  font-size: 16px;
-  width: 50px;
-  text-align: center;
+function guessLetter() {
+  const input = document.getElementById("letter-input");
+  const letter = input.value.toLowerCase();
+  input.value = "";
+
+  if (!letter.match(/[a-z]/) || letter.length !== 1) {
+    alert("Please enter a valid letter.");
+    return;
+  }
+
+  if (guessedLetters.includes(letter) || wrongLetters.includes(letter)) {
+    alert("You already guessed that letter.");
+    return;
+  }
+
+  if (selectedWord.includes(letter)) {
+    guessedLetters.push(letter);
+  } else {
+    wrongLetters.push(letter);
+  }
+
+  updateDisplay();
+  checkGameStatus();
 }
+
+function checkGameStatus() {
+  const wordGuessed = selectedWord.split("").every(letter => guessedLetters.includes(letter));
+  if (wordGuessed) {
+    document.getElementById("message").textContent = "🎉 You guessed the word!";
+  } else if (wrongLetters.length >= 6) {
+    document.getElementById("message").textContent = `💀 Game Over! The word was "${selectedWord}".`;
+  }
+}
+
+function resetGame() {
+  startGame();
+}
+
+window.onload = startGame;
