@@ -1,37 +1,22 @@
 
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Team Hangman Game</title>
+  <title>Custom Hangman Game</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Virtual Team Hangman</h1>
-    <div id="team-selection">
-      <h2>Select Your Team</h2>
-      <div class="teams">
-        <button onclick="selectTeam('Team 1')">Team 1</button>
-        <button onclick="selectTeam('Team 2')">Team 2</button>
-        <button onclick="selectTeam('Team 3')">Team 3</button>
-        <button onclick="selectTeam('Team 4')">Team 4</button>
-        <button onclick="selectTeam('Team 5')">Team 5</button>
-        <button onclick="selectTeam('Team 6')">Team 6</button>
-        <button onclick="selectTeam('Team 7')">Team 7</button>
-     :none;">
-      <h2 id="team-name"></h2>
-      <p id="word-display"></p>
-      <p>Wrong guesses: <span id="wrong-letters"></span></p>
-      <input type="text" id="letter-input" maxlength="1" placeholder="Enter a letter" />
-      <button onclick="guessLetter()">Guess</button>
-      <p id="message"></p>
-      <button onclick="resetGame()">Play Again</button>
-    </div>
+    <h1>Custom Hangman</h1>
+    <p id="word-display"></p>
+    <p>Wrong guesses: <span id="wrong-letters"></span></p>
+    <input type="text" id="letter-input" maxlength="1" placeholder="Enter a letter" />
+    <button onclick="guessLetter()">Guess</button>
+    <p id="message"></p>
+    <button onclick="resetGame()">Play Again</button>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
